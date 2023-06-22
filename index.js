@@ -3,6 +3,8 @@ const express = require('express');
 const app = express()
 const mongoose = require('mongoose');
 
+const userRoute = require('./routes/user')
+
 const port = process.env.PORT
 const mongoURl = process.env.MONGO_URL
 mongoose.connect(mongoURl)
@@ -11,10 +13,11 @@ mongoose.connect(mongoURl)
 
 
 
-//Test Api
-app.get('/test', (req, res) => {
-    res.send('Test is successful')
-})
+//Test Api - Router
+app.use('/api/user', userRoute);
+
+
+
 
 
 app.listen(port || 5000, () => {
