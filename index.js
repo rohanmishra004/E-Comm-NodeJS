@@ -11,7 +11,12 @@ mongoose.connect(mongoURl)
 
 
 
+//Test Api
+app.get('/test', (req, res) => {
+    res.send('Test is successful')
+})
 
-app.listen(process.env.port, () => {
+
+app.listen(port || 5000, () => {
     console.log(`Server is running on port ${port}`)
 })
