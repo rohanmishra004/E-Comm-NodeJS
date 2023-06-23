@@ -11,10 +11,12 @@ mongoose.connect(mongoURl)
     .then(() => console.log('DB connection successful'))
     .catch((err) => console.log(err));
 
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
 
 
 //Test Api - Router
-app.use('/api/user', userRoute);
+app.use('/api/users', userRoute);
 
 
 
