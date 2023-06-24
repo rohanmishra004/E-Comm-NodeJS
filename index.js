@@ -3,7 +3,11 @@ const express = require('express');
 const app = express()
 const mongoose = require('mongoose');
 
+//Routes Imports
 const userRoute = require('./routes/user')
+const authRoute = require('./routes/authentication')
+
+
 
 const port = process.env.PORT
 const mongoURl = process.env.MONGO_URL
@@ -11,11 +15,15 @@ mongoose.connect(mongoURl)
     .then(() => console.log('DB connection successful'))
     .catch((err) => console.log(err));
 
+
+
+//MiddleWare 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 
 
-//Test Api - Router
+
+app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 
 
